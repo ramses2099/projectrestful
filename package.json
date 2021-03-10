@@ -13,6 +13,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "express-bearer-token": "^2.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7"
   },
@@ -32,7 +34,8 @@
     "delay": "2500",
     "env": {
       "NODE_ENV": "development",
-      "PORT": 4000
+      "PORT": 4000,
+      "ACCESS_TOKEN_SECRET": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
     }
   }
 }

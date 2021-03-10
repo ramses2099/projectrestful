@@ -1,10 +1,11 @@
 var express = require('express');
 const bookRouter = express.Router();
 const mysqlConnection = require('../connection');
+const authenticateToken = require('../authenticateToken');
 
 //Router
 bookRouter.route('/books')
-    .get((req, res) => {
+    .get(authenticateToken, (req, res) => {
         mysqlConnection.query("SELECT * FROM books", (err, rows, fields) => {
             if (!err) {
                 res.send(rows);
