@@ -1,26 +1,13 @@
 const express = require("express");
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
-
-const mysqlConnection = require('./connection');
+const bookRouter = require('./routes/bookRouter');
 
 const app = express();
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-const bookRouter = express.Router();
 const PORT = process.env.PORT || 3000;
-
-//Router
-bookRouter.route('/books')
-  .get((req, res) => {
-    mysqlConnection.query("SELECT * from books", (err, rows, fields) => {
-      if (!err) {
-        res.send(rows);
-      } else {
-        console.log(err);
-      }
-    });
-  });
 
 app.use('/api', bookRouter);
 
